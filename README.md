@@ -1,6 +1,6 @@
 <h1>Flutter Chat App</h1>
 
-<p>This is a Flutter chat application with three main pages: Login, Register, and Chat. The app allows users to log in, register, and communicate with others in a chat room. The user's data is securely stored in Firebase Authentication and the chat messages are stored in Firestore.</p>
+<p>This is a Flutter chat application with three main pages: Login, Register, and Chat. The app allows users to log in, register, and communicate with others in a chat room. The user's data is securely stored in Firebase Authentication, and the chat messages are stored in Firestore.</p>
 
 <h2>Features</h2>
 
@@ -65,11 +65,12 @@
 <p>This project uses the following dependencies:</p>
 
 <ul>
-  <li><code>firebase_core</code>: Firebase core functionality for Flutter.</li>
-  <li><code>firebase_auth</code>: Firebase authentication services for Flutter.</li>
-  <li><code>cloud_firestore</code>: Flutter plugin for Firestore, a NoSQL cloud database.</li>
-  <li><code>flutter_bloc</code>: State management library for Flutter.</li>
-  <li><code>fluttertoast</code>: Flutter package for displaying toast messages.</li>
+  <li><code>firebase_auth: ^4.6.3</code> - Provides Firebase authentication services for user login and registration.</li>
+  <li><code>flutter: sdk: flutter</code> - The Flutter SDK.</li>
+  <li><code>cupertino_icons: ^1.0.2</code> - Provides the Cupertino icons used in the app's UI.</li>
+  <li><code>firebase_core: ^2.14.0</code> - Provides the core functionality for Firebase integration in Flutter.</li>
+  <li><code>modal_progress_hud_nsn: ^0.4.0</code> - Displays a modal progress indicator during login and registration processes.</li>
+  <li><code>cloud_firestore: ^4.8.2</code> - Enables integration with Firestore for storing and retrieving chat messages.</li>
 </ul>
 
 <h2>Conclusion</h2>
