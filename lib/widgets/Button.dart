@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 class CusttomButton extends StatelessWidget {
   String text1;
   VoidCallback onTab;
-  CusttomButton({required this.onTab, required this.text1});
+  dynamic buttoncolor;
+  CusttomButton({required this.onTab, required this.text1, this.buttoncolor});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class CusttomButton extends StatelessWidget {
       },
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
-          const Color.fromARGB(255, 255, 255, 255),
+          buttoncolor ?? const Color.fromARGB(255, 255, 255, 255),
         ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
@@ -33,7 +34,7 @@ class CusttomButton extends StatelessWidget {
         child: Text(
           text1,
           style: TextStyle(
-            color: const Color.fromARGB(255, 0, 0, 0),
+            color:const Color.fromARGB(255, 255, 255, 255),
             fontSize: screenWidth * 0.07,
           ),
         ),

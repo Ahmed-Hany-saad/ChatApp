@@ -1,10 +1,10 @@
 // ignore_for_file: file_names
 
 import 'package:chat_app/pages/chatApp.dart';
+import 'package:chat_app/pages/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import '../constants.dart';
 import '../widgets/Button.dart';
 import '../widgets/TextField.dart';
 
@@ -39,7 +39,7 @@ class _registerState extends State<register> {
     return ModalProgressHUD(
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: KPrimarycolor,
+        backgroundColor: const Color(0xFFD5D8DE),
         body: Center(
           child: Form(
             key: register._formKey,
@@ -47,38 +47,28 @@ class _registerState extends State<register> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset("assets/images/scholar.png"),
+                  Image.asset("assets/images/chat_icon.gif"),
                   Text(
-                    "School Chat",
+                    "Creat new account",
                     style: TextStyle(
-                      fontFamily: "pacifico",
-                      color: Colors.white,
-                      fontSize: screenWidth * 0.09,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 0, 0, 0),
+                      fontSize: screenWidth * 0.08,
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.only(
-                      end: screenWidth * 0.6,
-                      top: screenWidth * 0.001,
-                      bottom: screenWidth * 0.01,
-                    ),
-                    child: Text(
-                      "Register",
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.08,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: screenWidth * 0.03),
+                  SizedBox(height: screenWidth * 0.07),
                   CustomTextField(
                     hint: "Email",
                     onchange: (data) {
                       email = data;
                     },
+                    icon:const Icon(Icons.email_outlined),
+                    icon2:const Icon(Icons.close_rounded),
                   ),
-                  SizedBox(height: screenWidth * 0.03),
+                  SizedBox(height: screenWidth * 0.045),
                   CustomTextField(
+                    icon:const Icon(Icons.lock_outline),
+                    icon2:const Icon(Icons.remove_red_eye),
                     obsecure: true,
                     hint: "Password",
                     onchange: (data) {
@@ -95,16 +85,17 @@ class _registerState extends State<register> {
                       isLoading = false;
                     },
                     text1: "Register",
+                    buttoncolor:const Color(0xFF00C751),
                   ),
                   SizedBox(height: screenWidth * 0.034),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Already have an account? ",
+                        "Already have an account ? ",
                         style: TextStyle(
                           fontSize: screenWidth * 0.06,
-                          color: Colors.white,
+                          color: const Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                       GestureDetector(
@@ -112,11 +103,20 @@ class _registerState extends State<register> {
                           "Log In",
                           style: TextStyle(
                             fontSize: screenWidth * 0.06,
-                            color: const Color.fromARGB(255, 102, 220, 253),
+                            color: const Color.fromARGB(164, 12, 147, 66),
                           ),
                         ),
                         onTap: () {
-                          Navigator.pop(context);
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) =>const LogIn()),
+                          );
+                        },
+                        onDoubleTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const LogIn()),
+                          );
                         },
                       ),
                     ],

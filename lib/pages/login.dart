@@ -1,15 +1,11 @@
-// ignore_for_file: file_names
-
 import 'package:chat_app/pages/Register.dart';
 import 'package:chat_app/pages/chatApp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import '../constants.dart';
 import '../widgets/Button.dart';
 import '../widgets/TextField.dart';
 
-// ignore: camel_case_types
 class LogIn extends StatefulWidget {
   const LogIn({Key? key}) : super(key: key);
   static String id = "log in";
@@ -19,7 +15,6 @@ class LogIn extends StatefulWidget {
   State<LogIn> createState() => _LogInState();
 }
 
-// ignore: camel_case_types
 class _LogInState extends State<LogIn> {
   String? email;
   String? password;
@@ -40,7 +35,7 @@ class _LogInState extends State<LogIn> {
     return ModalProgressHUD(
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: KPrimarycolor,
+        backgroundColor: const Color(0xFFFDFDFD),
         body: Center(
           child: Form(
             key: LogIn._formKey,
@@ -48,39 +43,38 @@ class _LogInState extends State<LogIn> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset("assets/images/scholar.png"),
+                  SizedBox(
+                    height: screenWidth * 0.05,
+                  ),
+                  SizedBox(
+                    height: screenWidth * 0.6,
+                    child: Image.asset("assets/images/ezgif-4-bee73b0862.gif"),
+                  ),
+                  SizedBox(
+                    height: screenWidth * 0.03,
+                  ),
                   Text(
-                    "School Chat",
+                    "Welcome Back",
                     style: TextStyle(
-                      fontFamily: "pacifico",
-                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 0, 0, 0),
                       fontSize: screenWidth * 0.09,
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.only(
-                      end: screenWidth * 0.7,
-                      top: screenWidth * 0.001,
-                      bottom: screenWidth * 0.01,
-                    ),
-                    child: Text(
-                      "Log In",
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.08,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: screenWidth * 0.03),
+                  SizedBox(height: screenWidth * 0.07),
                   CustomTextField(
+                    icon:const Icon(Icons.email_outlined),
+                    icon2:const Icon(Icons.close_rounded),
                     hint: "Email",
                     onchange: (data) {
                       email = data;
                     },
                   ),
-                  SizedBox(height: screenWidth * 0.03),
+                  SizedBox(height: screenWidth * 0.045),
                   CustomTextField(
+                    icon:const Icon(Icons.lock_outline),
                     hint: "Password",
+                    icon2: const Icon(Icons.remove_red_eye),
                     onchange: (data) {
                       password = data;
                     },
@@ -88,6 +82,7 @@ class _LogInState extends State<LogIn> {
                   ),
                   SizedBox(height: screenWidth * 0.05),
                   CusttomButton(
+                    buttoncolor:const Color(0xff2D88F4),
                     onTab: () async {
                       isLoading = true;
 
@@ -103,10 +98,10 @@ class _LogInState extends State<LogIn> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Don't have account ? ",
+                        "Don't have an account ? ",
                         style: TextStyle(
                           fontSize: screenWidth * 0.06,
-                          color: Colors.white,
+                          color: const Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                       GestureDetector(
@@ -114,11 +109,20 @@ class _LogInState extends State<LogIn> {
                           "Register",
                           style: TextStyle(
                             fontSize: screenWidth * 0.06,
-                            color: const Color.fromARGB(255, 102, 220, 253),
+                            color:const Color.fromARGB(192, 0, 98, 218),
                           ),
                         ),
                         onTap: () {
-                          Navigator.pushNamed(context, register.id);
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) =>const register()),
+                          );
+                        },
+                        onDoubleTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) =>const register()),
+                          );
                         },
                       ),
                     ],
@@ -161,7 +165,7 @@ class _LogInState extends State<LogIn> {
         // ignore: use_build_context_synchronously
         showSnackBar(
           context,
-          "log in has been successfully completed",
+          "Log in has been successfully completed",
           const Color.fromARGB(255, 54, 159, 1),
         );
         // ignore: use_build_context_synchronously
@@ -170,7 +174,7 @@ class _LogInState extends State<LogIn> {
         if (e.code == 'user-not-found') {
           showSnackBar(
             context,
-            "user not found",
+            "User not found",
             const Color.fromARGB(255, 204, 24, 24),
           );
         } else if (e.code == 'wrong-password') {
